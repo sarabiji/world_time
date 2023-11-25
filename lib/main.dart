@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:world_time/pages/home.dart';
+import 'package:world_time/pages/loading.dart';
+import 'package:world_time/pages/location.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    home: Home(),
+  runApp(MaterialApp(
+    //home: Home(),
+    routes: {
+      '/': (context) => const Loading(),
+      '/home': (context) => const Home(),
+      '/location': (context) => const Location(),
+    },
   ));
 }
