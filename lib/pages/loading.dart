@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+//import 'package:http/http.dart' as http;
+//import 'dart:convert';
 import 'package:world_time/services/world_time.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -34,18 +34,24 @@ class _LoadingState extends State<Loading> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.blue,
       body: Padding(
-          padding: EdgeInsets.all(50.0),
+          padding: const EdgeInsets.all(50.0),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                /*SpinKitFadingCircle(
-                    itemBuilder: Text("nsbkslgksgvdg"),
-                    ),*/
-                Text(
+                SpinKitFadingCircle(
+                  itemBuilder: (BuildContext context, int index) {
+                    return DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: index.isEven ? Colors.white : Colors.green,
+                      ),
+                    );
+                  },
+                ),
+                const Text(
                   'Loading...',
                   style: (TextStyle(
                     fontSize: 20.0,

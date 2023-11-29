@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+//import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:intl/intl.dart';
@@ -11,7 +11,6 @@ class WorldTime {
 
   late bool isDayTime = false;
   WorldTime({required this.location, required this.flag, required this.url});
-  @override
   Future<void> getTime() async {
     try {
       final response = await http
