@@ -1,28 +1,30 @@
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'dart:js_util';
-import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 
 class WorldTime {
   late String location;
-  late String time;
+  late String time = "";
   late String flag;
   late String url;
 
-  late bool isDayTime;
-  //@override
+  late bool isDayTime = false;
+  WorldTime({required this.location, required this.flag, required this.url});
+  @override
   Future<void> getTime() async {
     try {
-      Response response =
-          get('http://worldtimeapi.org/api/timezones/$url' as Uri) as Response;
-      Map data = jsonDecode(response.body);
+      final response = await http
+          .get(Uri.parse('http://worldtimeapi.org/api/timezone/$url'));
+      Map data = json.decode(response.body);
       String datetime = data['datetime'];
       String offset = data['utc_offset'].substring(1, 3);
-
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset)));
       print(now);
-      WorldTime({this.location, this.flag, this.url});
+
+      //WorldTime({location, flag, url});
+
       isDayTime = now.hour > 6 && now.hour < 20 ? true : false;
       time = DateFormat.jm().format(now);
     } catch (e) {

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:world_time/services/world_time.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
@@ -34,14 +37,23 @@ class _LoadingState extends State<Loading> {
     return const Scaffold(
       backgroundColor: Colors.blue,
       body: Padding(
-        padding: EdgeInsets.all(50),
-        child: Center(
-          child: SpinKitChasingDots(
-            color: Colors.white,
-            size: 50,
-          ),
-        ),
-      ),
+          padding: EdgeInsets.all(50.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                /*SpinKitFadingCircle(
+                    itemBuilder: Text("nsbkslgksgvdg"),
+                    ),*/
+                Text(
+                  'Loading...',
+                  style: (TextStyle(
+                    fontSize: 20.0,
+                  )),
+                ),
+              ],
+            ),
+          )),
     );
   }
 }
