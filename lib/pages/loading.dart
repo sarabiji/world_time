@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:http/http.dart' as http;
-//import 'dart:convert';
 import 'package:world_time/services/world_time.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -13,9 +11,10 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
+  String time = 'loading...';
   void setupWorldTime() async {
     WorldTime instance =
-        WorldTime(location: 'Kolkota', flag: 'india.png', url: 'Asia/Kolkata');
+        WorldTime(location: 'Kolkota', flag: 'India.png', url: 'Asia/Kolkata');
     await instance.getTime();
     // ignore: use_build_context_synchronously
     Navigator.pushReplacementNamed(context, '/home', arguments: {

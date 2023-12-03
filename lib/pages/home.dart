@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
     print(data);
     //String bgImage;
 
-    String bgImage = data['isDayTime'] ? 'day.jpg' : 'night.jpg';
+    String bgImage = data['isDayTime']! ? 'day.jpg' : 'night.jpg';
 
     Color? bgColor = data['isDayTime'] ? Colors.blue : Colors.indigo[500];
 
@@ -40,26 +40,28 @@ class _HomeState extends State<Home> {
             child: Column(
               children: [
                 ElevatedButton.icon(
-                    onPressed: () async {
-                      dynamic result =
-                          await Navigator.pushNamed(context, '/location');
-                      setState(() {
-                        data = {
-                          'location': result['location'],
-                          'flag': result['flag'],
-                          'time': result['time'],
-                          'isDayTime': result['isDayTime'],
-                        };
-                      });
-                    },
-                    icon: Icon(
-                      Icons.edit_location,
+                  onPressed: () async {
+                    dynamic result =
+                        await Navigator.pushNamed(context, '/location');
+                    setState(() {
+                      data = {
+                        'location': result['location'],
+                        'flag': result['flag'],
+                        'time': result['time'],
+                      };
+                    });
+                  },
+                  icon: Icon(
+                    Icons.edit_location,
+                    color: Colors.grey[300],
+                  ),
+                  label: Text(
+                    "Edit Location",
+                    style: TextStyle(
                       color: Colors.grey[300],
                     ),
-                    label: Text("Edit Location",
-                        style: TextStyle(
-                          color: Colors.grey[300],
-                        ))),
+                  ),
+                ),
                 const SizedBox(
                   height: 20,
                 ),

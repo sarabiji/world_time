@@ -1,4 +1,3 @@
-//import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:intl/intl.dart';
@@ -8,8 +7,8 @@ class WorldTime {
   late String time = "";
   late String flag;
   late String url;
-
   late bool isDayTime = false;
+
   WorldTime({required this.location, required this.flag, required this.url});
   Future<void> getTime() async {
     try {
@@ -20,7 +19,7 @@ class WorldTime {
       String offset = data['utc_offset'].substring(1, 3);
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset)));
-      print(now);
+      print(now.hour);
 
       //WorldTime({location, flag, url});
 
