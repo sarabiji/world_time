@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:world_time/services/world_time.dart';
+//import 'package:world_time/pages/home.dart';
 
 class Location extends StatefulWidget {
   const Location({super.key});
@@ -25,6 +26,8 @@ class _LocationState extends State<Location> {
     void updateTime(index) async {
       WorldTime instance = locations[index];
       await instance.getTime();
+
+      // ignore: use_build_context_synchronously
       Navigator.pop(context, {
         'location': instance.location,
         'flag': instance.flag,

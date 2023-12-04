@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'lib.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -20,9 +21,9 @@ class _HomeState extends State<Home> {
         ? data
         : ModalRoute.of(context)!.settings.arguments as Map;
     print(data);
-    //String bgImage;
+    String bgImage;
 
-    String bgImage = data['isDayTime']! ? 'day.jpg' : 'night.jpg';
+    bgImage = data['isDayTime']! ? 'day.jpg' : 'night.jpg';
 
     Color? bgColor = data['isDayTime'] ? Colors.blue : Colors.indigo[500];
 
@@ -45,9 +46,9 @@ class _HomeState extends State<Home> {
                         await Navigator.pushNamed(context, '/location');
                     setState(() {
                       data = {
+                        'time': result['time'],
                         'location': result['location'],
                         'flag': result['flag'],
-                        'time': result['time'],
                       };
                     });
                   },
